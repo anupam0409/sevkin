@@ -15,7 +15,7 @@ function Testimonial() {
                                 <div className="testimonial-sliders">
                                     <div className="single-testimonial-slider">
                                         <div className="client-avater">
-                                            <img src="../assets/img/avaters/avatar1.png" alt="" />
+                                            <img src="/sevkin/assets/img/avaters/avatar1.png" alt="" />
                                         </div>
                                         <div className="client-meta">
                                             <h3>Devansh Gupta <span>Local shop owner</span></h3>
@@ -23,13 +23,13 @@ function Testimonial() {
                                                 "It was Good Service"
                                             </p>
                                             <div className="last-icon">
-                                                <img className="icon-style" src="../assets/img/icon/quote.png" alt="quote"></img>
+                                                <img className="icon-style" src="/sevkin/assets/img/icon/quote.png" alt="quote"></img>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="single-testimonial-slider">
                                         <div className="client-avater">
-                                            <img src="../assets/img/avaters/avatar2.png" alt="" />
+                                            <img src="/sevkin/assets/img/avaters/avatar2.png" alt="" />
                                         </div>
                                         <div className="client-meta">
                                             <h3>Govind Patil <span>Local shop owner</span></h3>
@@ -37,13 +37,13 @@ function Testimonial() {
                                                 "Taste was awesome!!"
                                             </p>
                                             <div className="last-icon">
-                                                <img className="icon-style" src="../assets/img/icon/quote.png" alt="quote"></img>
+                                                <img className="icon-style" src="/sevkin/assets/img/icon/quote.png" alt="quote"></img>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="single-testimonial-slider">
                                         <div className="client-avater">
-                                            <img src="../assets/img/avaters/avatar3.png" alt="" />
+                                            <img src="/sevkin/assets/img/avaters/avatar3.png" alt="" />
                                         </div>
                                         <div className="client-meta">
                                             <h3>Hrishikesh N <span>Local shop owner</span></h3>
@@ -51,7 +51,7 @@ function Testimonial() {
                                                 " Really Liked it. I will recommend others too. Thanks Sevkin!"
                                             </p>
                                             <div className="last-icon">
-                                                <img className="icon-style" src="../assets/img/icon/quote.png" alt="quote"></img>
+                                                <img className="icon-style" src="/sevkin/assets/img/icon/quote.png" alt="quote"></img>
                                             </div>
                                         </div>
                                     </div>

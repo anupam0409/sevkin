@@ -34,15 +34,15 @@ function Contactform() {
                     <div className="col-lg-4">
                         <div className="contact-form-wrap">
                             <div className="contact-form-box">
-                                <h4><img className="icon-style" src="../assets/img/icon/location-black.png" alt="location"></img> Shop Address</h4>
+                                <h4><img className="icon-style" src="/sevkin/assets/img/icon/location-black.png" alt="location"></img> Shop Address</h4>
                                 <p>Vanrai Colony, Goregaon East <br /> Maharashtra, Mumbai. <br /> India</p>
                             </div>
                             <div className="contact-form-box">
-                                <h4><img className="icon-style" src="../assets/img/icon/clock-black.png" alt="clock"></img> Shop Hours</h4>
+                                <h4><img className="icon-style" src="/sevkin/assets/img/icon/clock-black.png" alt="clock"></img> Shop Hours</h4>
                                 <p>MON - FRIDAY: 8 to 9 PM <br /> SAT - SUN: 10 to 8 PM </p>
                             </div>
                             <div className="contact-form-box">
-                                <h4><img className="icon-style" src="../assets/img/icon/address-black.png" alt="address"></img> Contact</h4>
+                                <h4><img className="icon-style" src="/sevkin/assets/img/icon/address-black.png" alt="address"></img> Contact</h4>
                                 <p>Phone: +91 88714 06882<br /> Email: ayushchem31@gmail.com</p>
                             </div>
                         </div>

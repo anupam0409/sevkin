@@ -11,7 +11,7 @@ function Advertisement() {
                             <div className="abt-bg">
                                 <a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" className="video-play-btn popup-youtube"><img
                                     height="50px" width="50px" style={{ marginTop: '16px' }}
-                                    src="../assets/img/icon/youtube.png" alt="youtube"></img></a>
+                                    src="/sevkin/assets/img/icon/youtube.png" alt="youtube"></img></a>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-12">

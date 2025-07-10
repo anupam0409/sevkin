@@ -4,7 +4,7 @@ import React from 'react';
 function Login() {
     return (
         <div className="login-area">
-            <span className="close-login-btn"><img className="icon-style" src="../assets/img/icon/close.png" alt='close'></img></span>
+            <span className="close-login-btn"><img className="icon-style" src="/sevkin/assets/img/icon/close.png" alt='close'></img></span>
             <div className="row" style={{ marginTop: '50px' }}>
                 <div className="col-3"></div>
                 <div className="col-6">
@@ -16,22 +16,22 @@ function Login() {
                                     <h5 className="text-light">Sign in with:</h5>
                                     <button type="button" data-mdb-button-init data-mdb-ripple-init
                                         className="btn btn-link btn-floating mx-1">
-                                        <img className="icon-style" src="../assets/img/icon/facebook.png" alt='facebook'></img>
+                                        <img className="icon-style" src="/sevkin/assets/img/icon/facebook.png" alt='facebook'></img>
                                     </button>
 
                                     <button type="button" data-mdb-button-init data-mdb-ripple-init
                                         className="btn btn-link btn-floating mx-1">
-                                        <img className="icon-style" src="../assets/img/icon/google.png" alt='google'></img>
+                                        <img className="icon-style" src="/sevkin/assets/img/icon/google.png" alt='google'></img>
                                     </button>
 
                                     <button type="button" data-mdb-button-init data-mdb-ripple-init
                                         className="btn btn-link btn-floating mx-1">
-                                        <img className="icon-style" src="../assets/img/icon/twitter.png" alt='twitter'></img>
+                                        <img className="icon-style" src="/sevkin/assets/img/icon/twitter.png" alt='twitter'></img>
                                     </button>
 
                                     <button type="button" data-mdb-button-init data-mdb-ripple-init
                                         className="btn btn-link btn-floating mx-1">
-                                        <img className="icon-style" src="../assets/img/icon/github.png" alt='github'></img>
+                                        <img className="icon-style" src="/sevkin/assets/img/icon/github.png" alt='github'></img>
                                     </button>
                                 </div>
 

@@ -26,15 +26,15 @@ function News() {
                     <div className="news-text-box">
                         <h3><a href="single-news.html">You will vainly look for Snack on it in autumn.</a></h3>
                         <p className="blog-meta">
-                            <span className="author"><img className="icon-style" src="../assets/img/icon/userb.png" alt="userb"></img>
+                            <span className="author"><img className="icon-style" src="/sevkin/assets/img/icon/userb.png" alt="userb"></img>
                                 Admin</span>
-                            <span className="date"><img className="icon-style" src="../assets/img/icon/calendar.png" alt="calendar"></img>
+                            <span className="date"><img className="icon-style" src="/sevkin/assets/img/icon/calendar.png" alt="calendar"></img>
                                 27 December, 2019</span>
                         </p>
                         <p className="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi.
                             Praesent vitae mattis nunc, egestas viverra eros.</p>
                         <a href="single-news.html" className="read-more-btn">read more <img className="icon-style"
-                                src="../assets/img/icon/rightangle.png" alt="rightangle"></img></a>
+                                src="/sevkin/assets/img/icon/rightangle.png" alt="rightangle"></img></a>
                     </div>
                 </div>
             </div>
@@ -46,15 +46,15 @@ function News() {
                     <div className="news-text-box">
                         <h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
                         <p className="blog-meta">
-                            <span className="author"><img className="icon-style" src="../assets/img/icon/userb.png" alt="userb"></img>
+                            <span className="author"><img className="icon-style" src="/sevkin/assets/img/icon/userb.png" alt="userb"></img>
                                 Admin</span>
-                            <span className="date"><img className="icon-style" src="../assets/img/icon/calendar.png" alt="calendar"></img>
+                            <span className="date"><img className="icon-style" src="/sevkin/assets/img/icon/calendar.png" alt="calendar"></img>
                                 27 December, 2019</span>
                         </p>
                         <p className="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi.
                             Praesent vitae mattis nunc, egestas viverra eros.</p>
                         <a href="single-news.html" className="read-more-btn">read more <img className="icon-style"
-                                src="../assets/img/icon/rightangle.png" alt="rightangle"></img></a>
+                                src="/sevkin/assets/img/icon/rightangle.png" alt="rightangle"></img></a>
                     </div>
                 </div>
             </div>
@@ -66,15 +66,15 @@ function News() {
                     <div className="news-text-box">
                         <h3><a href="single-news.html">Good thoughts bear good fresh juicy Snack.</a></h3>
                         <p className="blog-meta">
-                            <span className="author"><img className="icon-style" src="../assets/img/icon/userb.png" alt="userb"></img>
+                            <span className="author"><img className="icon-style" src="/sevkin/assets/img/icon/userb.png" alt="userb"></img>
                                 Admin</span>
-                            <span className="date"><img className="icon-style" src="../assets/img/icon/calendar.png" alt="calendar"></img>
+                            <span className="date"><img className="icon-style" src="/sevkin/assets/img/icon/calendar.png" alt="calendar"></img>
                                 27 December, 2019</span>
                         </p>
                         <p className="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi.
                             Praesent vitae mattis nunc, egestas viverra eros.</p>
                         <a href="single-news.html" className="read-more-btn">read more <img className="icon-style"
-                                src="../assets/img/icon/rightangle.png" alt="rightangle"></img></a>
+                                src="/sevkin/assets/img/icon/rightangle.png" alt="rightangle"></img></a>
                     </div>
                 </div>
             </div>

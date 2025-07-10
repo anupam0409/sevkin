@@ -51,36 +51,36 @@ export class Cart extends Component {
                                         <tbody>
                                             <tr className="table-body-row">
 
-                                                <td className="product-image"><img src="../assets/img/products/product-img-1.png"
+                                                <td className="product-image"><img src="/sevkin/assets/img/products/product-img-1.png"
                                                     alt="img" /></td>
                                                 <td className="product-name">Ratlami Sev</td>
                                                 <td className="product-price">₹85</td>
                                                 <td className="product-quantity"><input type="number" placeholder="1" /></td>
                                                 <td className="product-total">1</td>
                                                 <td className="product-remove"><a href="#"><img className="icon-style"
-                                                    src="../assets/img/icon/close-black.png" alt="close" /></a></td>
+                                                    src="/sevkin/assets/img/icon/close-black.png" alt="close" /></a></td>
                                             </tr>
                                             <tr className="table-body-row">
 
-                                                <td className="product-image"><img src="../assets/img/products/product-img-2.png"
+                                                <td className="product-image"><img src="/sevkin/assets/img/products/product-img-2.png"
                                                     alt="img" /></td>
                                                 <td className="product-name">Potato Chips</td>
                                                 <td className="product-price">₹140</td>
                                                 <td className="product-quantity"><input type="number" placeholder="2" /></td>
                                                 <td className="product-total">2</td>
                                                 <td className="product-remove"><a href="#"><img className="icon-style"
-                                                    src="../assets/img/icon/close-black.png" alt="close" /></a></td>
+                                                    src="/sevkin/assets/img/icon/close-black.png" alt="close" /></a></td>
                                             </tr>
                                             <tr className="table-body-row">
 
-                                                <td className="product-image"><img src="../assets/img/products/product-img-3.png"
+                                                <td className="product-image"><img src="/sevkin/assets/img/products/product-img-3.png"
                                                     alt="img" /></td>
                                                 <td className="product-name">Aloo Bhujia</td>
                                                 <td className="product-price">₹35</td>
                                                 <td className="product-quantity"><input type="number" placeholder="1" /></td>
                                                 <td className="product-total">1</td>
                                                 <td className="product-remove"><a href="#"><img className="icon-style"
-                                                    src="../assets/img/icon/close-black.png" alt="close" /></a></td>
+                                                    src="/sevkin/assets/img/icon/close-black.png" alt="close" /></a></td>
                                             </tr>
                                         </tbody>
                                     </table>

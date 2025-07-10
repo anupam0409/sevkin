@@ -27,7 +27,7 @@ export class Subcraving extends Component {
                         <div className="row">
                             <div className="col-md-5">
                                 <div className="single-product-img">
-                                    <img src="../assets/img/products/product-img-5.png" alt="img" />
+                                    <img src="/sevkin/assets/img/products/product-img-5.png" alt="img" />
                                 </div>
                             </div>
                             <div className="col-md-7">
@@ -42,19 +42,19 @@ export class Subcraving extends Component {
                                             <input type="number" placeholder="0" />
                                         </form>
                                         <a href="cart.html" className="cart-btn"><img className="icon-style"
-                                            src="../assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
+                                            src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                                         <p><strong>Categories: </strong>Chips, Banana chips</p>
                                     </div>
                                     <h4>Share:</h4>
                                     <ul className="product-share">
                                         <li><a href="#!"><img className="icon-style"
-                                            src="../assets/img/icon/facebook-black.png" alt="facebook"></img></a></li>
-                                        <li><a href="#!"><img className="icon-style" src="../assets/img/icon/twitter-black.png" alt="twitter"></img></a>
+                                            src="/sevkin/assets/img/icon/facebook-black.png" alt="facebook"></img></a></li>
+                                        <li><a href="#!"><img className="icon-style" src="/sevkin/assets/img/icon/twitter-black.png" alt="twitter"></img></a>
                                         </li>
-                                        <li><a href="#!"><img className="icon-style" src="../assets/img/icon/google-black.png" alt="google"></img></a>
+                                        <li><a href="#!"><img className="icon-style" src="/sevkin/assets/img/icon/google-black.png" alt="google"></img></a>
                                         </li>
                                         <li><a href="#!"><img className="icon-style"
-                                            src="../assets/img/icon/linkedin-black.png" alt="linkedIn"></img></a></li>
+                                            src="/sevkin/assets/img/icon/linkedin-black.png" alt="linkedIn"></img></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,48 +75,48 @@ export class Subcraving extends Component {
                             <div className="col-lg-2 col-md-6 text-center">
                                 <div className="single-product-item">
                                     <div className="product-image">
-                                        <a href="single-product.html"><img src="../assets/img/products/product-img-1.png"
+                                        <a href="single-product.html"><img src="/sevkin/assets/img/products/product-img-1.png"
                                             alt="" /></a>
                                     </div>
                                     <h3>Potato Chips</h3>
                                     <p className="product-price"><span>Per Kg</span> 85₹ </p>
                                     <a href="cart.html" className="cart-btn"><img className="icon-style"
-                                        src="../assets/img/icon/cart.png" alt="cart" />Add to Cart</a>
+                                        src="/sevkin/assets/img/icon/cart.png" alt="cart" />Add to Cart</a>
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-6 text-center">
                                 <div className="single-product-item">
                                     <div className="product-image">
-                                        <a href="single-product.html"><img src="../assets/img/products/product-img-2.png"
+                                        <a href="single-product.html"><img src="/sevkin/assets/img/products/product-img-2.png"
                                             alt="img" /></a>
                                     </div>
                                     <h3>Soya Caps</h3>
                                     <p className="product-price"><span>Per Kg</span> 70₹ </p>
-                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="../assets/img/icon/cart.png" alt='cart' />
+                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="/sevkin/assets/img/icon/cart.png" alt='cart' />
                                         Add to Cart</a>
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-6 text-center">
                                 <div className="single-product-item">
                                     <div className="product-image">
-                                        <a href="single-product.html"><img src="../assets/img/products/product-img-2.png"
+                                        <a href="single-product.html"><img src="/sevkin/assets/img/products/product-img-2.png"
                                             alt="img" /></a>
                                     </div>
                                     <h3>Wheels Crunch</h3>
                                     <p className="product-price"><span>Per Kg</span> 70₹ </p>
-                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="../assets/img/icon/cart.png" alt="cart" />
+                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="/sevkin/assets/img/icon/cart.png" alt="cart" />
                                         Add to Cart</a>
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-6 offset-lg-0 offset-md-3 text-center">
                                 <div className="single-product-item">
                                     <div className="product-image">
-                                        <a href="single-product.html"><img src="../assets/img/products/product-img-3.png"
+                                        <a href="single-product.html"><img src="/sevkin/assets/img/products/product-img-3.png"
                                             alt="img" /></a>
                                     </div>
                                     <h3>Tango Chips</h3>
                                     <p className="product-price"><span>Per Kg</span> 35₹ </p>
-                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="../assets/img/icon/cart.png" alt='cart' />
+                                    <a href="cart.html" className="cart-btn"><img className="icon-style" src="/sevkin/assets/img/icon/cart.png" alt='cart' />
                                         Add to Cart</a>
                                 </div>
                             </div>

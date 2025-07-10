@@ -51,7 +51,7 @@ function Footer() {
                 <form action="index.html">
                   <input type="email" placeholder="Email"/>
                     <button type="submit"><img className="icon-style"
-                      src="../assets/img/icon/paperplane.png" alt="paperplane"></img></button>
+                      src="/sevkin/assets/img/icon/paperplane.png" alt="paperplane"></img></button>
                 </form>
               </div>
             </div>

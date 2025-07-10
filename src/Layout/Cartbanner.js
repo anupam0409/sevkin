@@ -16,7 +16,7 @@ function Cartbanner() {
                                         </span>
                                     </div>
                                 </div>
-                                <img src="../assets/img/deal/deal-img.jpg" alt="" />
+                                <img src="/sevkin/assets/img/deal/deal-img.jpg" alt="" />
                             </div>
                         </div>
                         <div className="content-column col-lg-6">
@@ -42,7 +42,7 @@ function Cartbanner() {
                                 </div>
                             </div>
                             <a href="cart.html" className="cart-btn mt-3"><img className="icon-style"
-                                src="../assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
+                                src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                         </div>
                     </div>
                 </div>

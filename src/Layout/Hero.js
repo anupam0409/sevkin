@@ -19,16 +19,16 @@ function Hero() {
                                                 </ul>
                                                 <div className="carousel-inner">
                                                     <div className="carousel-item active">
-                                                        <img className="branding-logo" src="../assets/img/branding/brand-logo1.jpg"
+                                                        <img className="branding-logo" src="/sevkin/assets/img/branding/brand-logo1.jpg"
                                                             alt="Los Angeles" width="1100" height="500"/>
                                                     </div>
                                                     <div className="carousel-item">
-                                                        <img className="branding-logo" src="../assets/img/branding/brand-logo2.jpg"
+                                                        <img className="branding-logo" src="/sevkin/assets/img/branding/brand-logo2.jpg"
                                                             alt="Los Angeles" width="1100" height="500"/>
 
                                                     </div>
                                                     <div className="carousel-item">
-                                                        <img className="branding-logo" src="../assets/img/branding/brand-logo3.jpg"
+                                                        <img className="branding-logo" src="/sevkin/assets/img/branding/brand-logo3.jpg"
                                                             alt="Los Angeles" width="1100" height="500"/>
                                                     </div>
                                                 </div>

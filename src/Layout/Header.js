@@ -30,7 +30,7 @@ function Header() {
             <div className="main-menu-wrap">
               <div className="site-logo">
                 <Link to="about">
-                  <img src="../assets/img/logo.png" className="menu-logo" alt="sevkin" />
+                  <img src="/sevkin/assets/img/logo.png" className="menu-logo" alt="sevkin" />
                 </Link>
               </div>
               <nav className="main-menu">
@@ -49,14 +49,14 @@ function Header() {
                   <li>
                     <div className="header-icons">
                       <Link to="/cart"><img className="icon-style"
-                        src="../assets/img/icon/cart.png" alt='cart'></img></Link>
+                        src="/sevkin/assets/img/icon/cart.png" alt='cart'></img></Link>
                       <Link onClick={handleSearchShow}><img className="icon-style"
-                        src="../assets/img/icon/search.png" alt='search'></img></Link>
+                        src="/sevkin/assets/img/icon/search.png" alt='search'></img></Link>
                       <Link to="whatsapp://send?text=Hello Sevkins, Please let me know your special snack and most ordered one!&phone=+918871406882">
                         <img
-                          className="icon-style" src="../assets/img/icon/call.png" alt='call'></img></Link>
+                          className="icon-style" src="/sevkin/assets/img/icon/call.png" alt='call'></img></Link>
                       <Link onClick={handleLoginShow}><img className="icon-style"
-                        src="../assets/img/icon/user.png" alt='user'></img></Link>
+                        src="/sevkin/assets/img/icon/user.png" alt='user'></img></Link>
                     </div>
                   </li>
                 </ul>
@@ -76,7 +76,7 @@ function Header() {
               </div>
               <div className='col-2'>
                 <a href='#!' className="boxed-btn"><img className="icon-style"
-                  src="../assets/img/icon/search.png" alt='search'></img></a>
+                  src="/sevkin/assets/img/icon/search.png" alt='search'></img></a>
               </div>
             </div>
           </Form.Group>

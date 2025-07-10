@@ -83,13 +83,13 @@ const Craving = () => {
                             <div className={`col-lg-2 col-md-6 text-center filter-item ${item.category}`} key={index}>
                                 <div className="single-product-item">
                                     <div className="product-image">
-                                        <Link to="/subcraving"><img src={`../assets/img/products/${item.image}`}
+                                        <Link to="/subcraving"><img src={`/sevkin/assets/img/products/${item.image}`}
                                             alt={item.image} /></Link>
                                     </div>
                                     <h3>{item.name}</h3>
                                     <p className="product-price"><span>Per Kg</span> ₹{item.price}</p>
                                     <a href="cart.html" className="cart-btn"><img className="icon-style"
-                                        src="../assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
+                                        src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                                 </div>
                             </div>
                         ))}

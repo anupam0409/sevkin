@@ -10,7 +10,7 @@ function Features() {
                         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                             <div className="list-box d-flex align-items-center">
                                 <div className="list-icon">
-                                    <img className="icon-style" src="../assets/img/icon/shipping.png" alt="shipping"></img>
+                                    <img className="icon-style" src="/sevkin/assets/img/icon/shipping.png" alt="shipping"></img>
                                 </div>&nbsp;&nbsp;
                                 <div className="vl"></div>
                                 &nbsp;&nbsp;
@@ -23,7 +23,7 @@ function Features() {
                         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                             <div className="list-box d-flex align-items-center">
                                 <div className="list-icon">
-                                    <img className="icon-style" src="../assets/img/icon/phone24.png" alt="phone24"></img>
+                                    <img className="icon-style" src="/sevkin/assets/img/icon/phone24.png" alt="phone24"></img>
                                 </div>&nbsp;&nbsp;
                                 <div className="vl"></div>
                                 &nbsp;&nbsp;
@@ -36,7 +36,7 @@ function Features() {
                         <div className="col-lg-4 col-md-6">
                             <div className="list-box d-flex align-items-center">
                                 <div className="list-icon">
-                                    <img className="icon-style" src="../assets/img/icon/refund.png" alt="refund"></img>
+                                    <img className="icon-style" src="/sevkin/assets/img/icon/refund.png" alt="refund"></img>
                                 </div>&nbsp;&nbsp;
                                 <div className="vl"></div>
                                 &nbsp;&nbsp;

@@ -17,15 +17,15 @@ function Copyright() {
                             <div className="social-icons">
                                 <ul>
                                     <li><a href="#!" target="_blank"><img className="icon-style"
-                        src="../assets/img/icon/facebook.png" alt='user'></img></a></li>
+                        src="/sevkin/assets/img/icon/facebook.png" alt='user'></img></a></li>
                                     <li><a href="#!" target="_blank"><img className="icon-style"
-                        src="../assets/img/icon/twitter.png" alt='user'></img></a></li>
+                        src="/sevkin/assets/img/icon/twitter.png" alt='user'></img></a></li>
                                     <li><a href="#!" target="_blank"><img className="icon-style"
-                        src="../assets/img/icon/instagram.png" alt='user'></img></a></li>
+                        src="/sevkin/assets/img/icon/instagram.png" alt='user'></img></a></li>
                                     <li><a href="#!" target="_blank"><img className="icon-style"
-                        src="../assets/img/icon/linkedin.png" alt='user'></img></a></li>
+                        src="/sevkin/assets/img/icon/linkedin.png" alt='user'></img></a></li>
                                     <li><a href="#!" target="_blank"><img className="icon-style"
-                        src="../assets/img/icon/dribble.png" alt='user'></img></a></li>
+                        src="/sevkin/assets/img/icon/dribble.png" alt='user'></img></a></li>
                                 </ul>
                             </div>
                         </div>

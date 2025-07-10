@@ -38,7 +38,7 @@ export class Contact extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 text-center">
-                                <p> <img style={{height:'40px',width:'40px'}} src="../assets/img/icon/location.png"></img> Find Our
+                                <p> <img style={{height:'40px',width:'40px'}} src="/sevkin/assets/img/icon/location.png"></img> Find Our
                                     Location</p>
                             </div>
                         </div>
