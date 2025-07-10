@@ -2,7 +2,7 @@
   "name": "sevkin-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sevkin.github.io/sevkin",
+  "homepage": "https://anupam0409.github.io/sevkin",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
