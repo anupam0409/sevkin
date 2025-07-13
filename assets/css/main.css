@@ -568,6 +568,7 @@ ul.navbar-nav li.nav-item.active a.nav-link {
 }
 
 .top-header-area {
+  height: 0px;
   position: sticky;
   background-image: linear-gradient(#0a212e, #1A3B4A);
   top: 0;
@@ -2938,6 +2939,6 @@ table.order-details tbody td {
   background-color: #051922;
 }
 
-.form-label{
+.form-label {
   color: whitesmoke;
 }

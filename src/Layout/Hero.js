@@ -25,7 +25,6 @@ function Hero() {
                                                     <div className="carousel-item">
                                                         <img className="branding-logo" src="/sevkin/assets/img/branding/brand-logo2.jpg"
                                                             alt="Los Angeles" width="1100" height="500"/>
-
                                                     </div>
                                                     <div className="carousel-item">
                                                         <img className="branding-logo" src="/sevkin/assets/img/branding/brand-logo3.jpg"
@@ -41,7 +40,6 @@ function Hero() {
                                             </div>
                                         </div>
                                         <div className="col-4 text-center">
-
                                             <p className="subtitle">Taste of India</p>
                                             <h3>Delicious Crunchy Snacks</h3>
                                             <div className="hero-btns">

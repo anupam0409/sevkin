@@ -62,7 +62,8 @@ const Craving = () => {
                     </div>
                 </div>
             </div>
-            <div className="product-section mt-150 mb-150">
+            <div className="product-section">
+                <br/>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -88,7 +89,7 @@ const Craving = () => {
                                     </div>
                                     <h3>{item.name}</h3>
                                     <p className="product-price"><span>Per Kg</span> ₹{item.price}</p>
-                                    <a href="cart.html" className="cart-btn"><img className="icon-style"
+                                    <a href={`/cart?pcode=${item.id}`} className="cart-btn"><img className="icon-style"
                                         src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                                 </div>
                             </div>

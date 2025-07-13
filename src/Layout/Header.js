@@ -1,14 +1,22 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import Toast from 'react-bootstrap/Toast';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { getProdApiUrl } from '../Properties/AppConfig';
+import { getProdApiUrl, loginApiUrl } from '../Properties/AppConfig';
 import { getProdData } from '../Service/ProdService';
+import { doLoginData } from '../Service/UserService';
 
 function Header() {
-  const navigate = useNavigate();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [loginShow, setLoginShow] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
+  const navigate = useNavigate();
+  const handleDrawerClose = () => setShowDrawer(false);
   const handleClose = () => { setLoginShow(false); setSearchShow(false) };
   const handleSearchShow = () => setSearchShow(true);
   const handleLoginShow = () => setLoginShow(true);
@@ -21,50 +29,94 @@ function Header() {
       }
     })
   }
+  const doLogout = (e) => {
+    sessionStorage.clear()
+    navigate('/home')
+  }
+  const doLogin = (e) => {
+    const form = e.target;
+    e.preventDefault()
+    const formData = new FormData(form);
+    let postUrl = loginApiUrl
+    let getDataString = { "username": formData.get('username'), "password": formData.get('password') }
+    doLoginData(postUrl, getDataString).then(obj => {
+      if (obj.status === 'OK') {
+        sessionStorage.setItem('username', obj.data[0].username)
+        setShowSuccess(true)
+        setLoginShow(false)
+        setTimeout(function () {
+          setShowSuccess(false)
+        }, 2000);
+      }
+      if (obj.status === 'NOK') {
+        setShowError(true)
+        setLoginShow(false)
+        setTimeout(function () {
+          setShowError(false)
+        }, 2000);
+      }
+
+    })
+  }
+
+  React.useEffect(() => {
+    if (document.URL.indexOf("cart") !== -1) {
+      if (sessionStorage.getItem('username') == null) {
+        setLoginShow(true)
+      }
+    }
+  }, [])
 
   return (
-    <div className="top-header-area" id="sticker">
+    <div className="top-header-area">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 col-sm-12 text-center">
             <div className="main-menu-wrap">
               <div className="site-logo">
-                <Link to="about">
+                <Link to="/home">
                   <img src="/sevkin/assets/img/logo.png" className="menu-logo" alt="sevkin" />
                 </Link>
               </div>
-              <nav className="main-menu">
-                <ul>
-                  <li className="current-list-item"><Link to="/home">Home</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                  <li><Link to="home">News</Link>
-                    <ul className="sub-menu">
-                      <li><Link to="home">News</Link></li>
-                      <li><Link to="home">Single News</Link></li>
-                    </ul>
-                  </li>
-                  <li><Link to="/contact">Contact</Link></li>
-                  <li><Link onClick={getProduct}>Craving</Link></li>
-                  <li><Link to="/checkout">CheckOut</Link></li>
-                  <li>
-                    <div className="header-icons">
-                      <Link to="/cart"><img className="icon-style"
-                        src="/sevkin/assets/img/icon/cart.png" alt='cart'></img></Link>
-                      <Link onClick={handleSearchShow}><img className="icon-style"
-                        src="/sevkin/assets/img/icon/search.png" alt='search'></img></Link>
-                      <Link to="whatsapp://send?text=Hello Sevkins, Please let me know your special snack and most ordered one!&phone=+918871406882">
-                        <img
-                          className="icon-style" src="/sevkin/assets/img/icon/call.png" alt='call'></img></Link>
-                      <Link onClick={handleLoginShow}><img className="icon-style"
-                        src="/sevkin/assets/img/icon/user.png" alt='user'></img></Link>
-                    </div>
-                  </li>
-                </ul>
+              <nav className="navbar navbar-expand-lg hstack gap-3">
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                  <ul className='navbar-nav ml-auto justify-content-between'>
+                    <li className="nav-item active"><Link to="/home">Home</Link></li>
+                    <li className='nav-item'><Link to="/about">About</Link></li>
+                    <li className='nav-item'><Link to="/contact">Contact</Link></li>
+                    <li className='nav-item'><Link onClick={getProduct}>Craving</Link></li>
+                    <li className='nav-item'><Link to="/checkout">CheckOut</Link></li>
+                    <li className='nav-item'><Link to="/cart"><img className="icon-style"
+                      src="/sevkin/assets/img/icon/cart.png" alt='cart'></img></Link></li>
+                    <li className='nav-item'> <Link onClick={handleSearchShow}><img className="icon-style"
+                      src="/sevkin/assets/img/icon/search.png" alt='search'></img></Link></li>
+                    <li className='nav-item'><Link to="whatsapp://send?text=Hello Sevkins, Please let me know your special snack and most ordered one!&phone=+918871406882">
+                      <img className="icon-style" src="/sevkin/assets/img/icon/call.png" alt='call'></img></Link></li>
+                    {sessionStorage.getItem('username') === null ? <li className='nav-item'><Link onClick={handleLoginShow}><img className="icon-style"
+                      src="/sevkin/assets/img/icon/user.png" alt='user'></img></Link></li> :
+                      <li style={{ color: 'whitesmoke', padding: '18px' }} className='nav-item'>Hi {sessionStorage.getItem('username')}!<ul class="sub-menu">
+                        <li><a href="#logoutSuccessful" onClick={doLogout}><img className="icon-style"
+                          src="/sevkin/assets/img/icon/logout.png" alt='cart'></img> Logout</a></li>
+
+                      </ul></li>}
+                  </ul>
+                </div>
+                <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                  <img className="icon-style"
+                    src="/sevkin/assets/img/icon/hamburger.png" alt='hamburger'></img>
+                </button>
               </nav>
+              <div className="mobile-menu"></div>
             </div>
-          </div>
-        </div>
-      </div>
+          </div >
+        </div >
+      </div >
+      <a href="#!" onClick={() => {
+        setShowDrawer(true)
+      }} class="float">
+        <img className="icon-style my-float"
+          src="/sevkin/assets/img/icon/all.png" alt='chat'></img>
+      </a>
       <Modal show={searchShow} onHide={handleClose} style={{ borderColor: 'whitesmoke' }}>
         <Modal.Body className='search-modal' ><Form>
           <Form.Group
@@ -83,24 +135,61 @@ function Header() {
         </Form></Modal.Body>
       </Modal>
       <Modal show={loginShow} onHide={handleClose} style={{ borderColor: 'whitesmoke' }}>
-        <Modal.Body className='search-modal' >
-          <h3 className='orange-text'>LOGIN</h3>
-          <br />
-          <Form>
-            <Form.Group className="mb-3" controlId="formGroupEmail">
-              <Form.Control type="email" placeholder="Enter email" />
+        <form onSubmit={doLogin} id="loginForm">
+          <Modal.Body className='search-modal' >
+            <h4 className='orange-text'>Sign in or create account</h4>
+            <br />
+            <Form.Group className="mb-3" controlId="formGroupUsername">
+              <Form.Control type="text" placeholder="Username" name="username" />
             </Form.Group>
             <br />
             <Form.Group className="mb-3" controlId="formGroupPassword">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" name="password" />
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer style={{ backgroundColor: '#051922' }}>
-          <a href='#!' className="bordered-btn">Cancel</a>
-          <a href='#!' className="boxed-btn" type='submit'>Login</a>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer style={{ backgroundColor: '#47555D', justifyContent: 'space-between' }}>
+            <small className='text-light font-italic'>© 2025 sevkin.com, Inc. or its affiliates</small>
+            <Button variant="outline-warning" className="bordered-btn" onClick={handleClose}>Cancel</Button>
+            <Button variant="warning" className="boxed-btn" type='submit'>Login</Button>
+
+          </Modal.Footer>
+        </form>
       </Modal>
+      <Offcanvas show={showDrawer} onHide={handleDrawerClose} placement='end' style={{ color: 'whitesmoke', backgroundImage: 'linear-gradient(#1a2c35,#47555D)', width: '250px' }}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Hello, {sessionStorage.getItem('username') !== null ? sessionStorage.getItem('username') + '!' : 'Guest!'}</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>
+          <h6 class="bg-body-tertiary p-2">Trending</h6>
+          <ul class="list-group list-group-light mb-4">
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Exciting Flavours</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Newly Launched</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Best Sellers</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Women's Special Combo</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Mixtures of Ratlam</button>
+          </ul>
+          <h6 class="bg-body-tertiary p-2">Choose by Category</h6>
+          <ul class="list-group list-group-light mb-4">
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Sev</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Gathiya</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Chips</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Namkeen</button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Nuts</button>
+          </ul>
+          <h6 class="bg-body-tertiary p-2">Help and Settings</h6>
+          <ul class="list-group list-group-light mb-4">
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Your Account</button>
+            <button type='button' class="list-group-item d-flex justify-content-between align-items-center border-0 text-white">Wallet<span class="badge badge-light rounded-pill text-dark">₹0</span></button>
+            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Admin Service</button>
+          </ul>
+        </Offcanvas.Body>
+      </Offcanvas>
+      <Toast show={showSuccess} style={{ backgroundImage: 'linear-gradient(#4BB543,#87cc80)', color: 'white', fontSize: '15px' }}>
+        <Toast.Body><b>Login Successful</b></Toast.Body>
+      </Toast>
+      <Toast show={showError} style={{ backgroundImage: 'linear-gradient(#DC3545,#ee7b7b)', color: 'white', fontSize: '15px' }}>
+        <Toast.Body><b>Invalid Credentials</b></Toast.Body>
+      </Toast>
     </div>
   );
 }
