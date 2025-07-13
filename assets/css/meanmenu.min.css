@@ -39,7 +39,7 @@ a.meanmenu-reveal {
 	font-weight: 700
 }
 
-.mean-container a.meanmenu-reveal span {
+.mean-container img.meanmenu-reveal span {
 	display: block;
 	background: #fff;
 	height: 3px;
@@ -66,7 +66,7 @@ a.meanmenu-reveal {
 	width: 100%
 }
 
-.mean-container .mean-nav ul li a {
+.mean-container .mean-nav ul li img {
 	display: block;
 	float: left;
 	width: 90%;
@@ -80,7 +80,7 @@ a.meanmenu-reveal {
 	text-transform: uppercase
 }
 
-.mean-container .mean-nav ul li li a {
+.mean-container .mean-nav ul li li img {
 	width: 80%;
 	padding: 1em 10%;
 	border-top: 1px solid #f1f1f1;
@@ -91,32 +91,32 @@ a.meanmenu-reveal {
 	visibility: visible
 }
 
-.mean-container .mean-nav ul li.mean-last a {
+.mean-container .mean-nav ul li.mean-last img {
 	border-bottom: 0;
 	margin-bottom: 0
 }
 
-.mean-container .mean-nav ul li li li a {
+.mean-container .mean-nav ul li li li img {
 	width: 70%;
 	padding: 1em 15%
 }
 
-.mean-container .mean-nav ul li li li li a {
+.mean-container .mean-nav ul li li li li img {
 	width: 60%;
 	padding: 1em 20%
 }
 
-.mean-container .mean-nav ul li li li li li a {
+.mean-container .mean-nav ul li li li li li img {
 	width: 50%;
 	padding: 1em 25%
 }
 
-.mean-container .mean-nav ul li a:hover {
+.mean-container .mean-nav ul li img:hover {
 	background: #252525;
 	background: rgba(255, 255, 255, .1)
 }
 
-.mean-container .mean-nav ul li a.mean-expand {
+.mean-container .mean-nav ul li img.mean-expand {
 	margin-top: 1px;
 	width: 26px;
 	height: 32px;
@@ -133,7 +133,7 @@ a.meanmenu-reveal {
 	border-bottom: 1px solid rgba(255, 255, 255, .2) !important
 }
 
-.mean-container .mean-nav ul li a.mean-expand:hover {
+.mean-container .mean-nav ul li img.mean-expand:hover {
 	background: rgba(0, 0, 0, .9)
 }
 
