@@ -88,8 +88,8 @@ const Craving = () => {
                                             alt={item.image} /></Link>
                                     </div>
                                     <h3>{item.name}</h3>
-                                    <p className="product-price"><span>Per Kg</span> ₹{item.price}</p>
-                                    <a href={`/cart?pcode=${item.id}`} className="cart-btn"><img className="icon-style"
+                                    <p className="product-price"><span>{item.size}</span> ₹{item.price}</p>
+                                    <a href={`/cart?pcode=${item.id}&size=${item.size}&price=${item.price}`} className="cart-btn"><img className="icon-style"
                                         src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                                 </div>
                             </div>

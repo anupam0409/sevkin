@@ -1,5 +1,6 @@
 let prodData = null
-let cartData = null
+let vAddCartData = null
+let vGetCartData = null
 
 const getProdData = (url) => {
     if (prodData === null) {
@@ -25,8 +26,8 @@ const getProdData = (url) => {
     }
 }
 
-const addCartData = (url, param) => {
-    if (cartData === null) {
+const getCartData = (url,param) => {
+    if (vGetCartData === null) {
         return fetch(url, {
             method: 'POST',
             headers: {
@@ -46,10 +47,35 @@ const addCartData = (url, param) => {
             });
     }
     else {
-        return Promise.resolve(getProdData)
+        return Promise.resolve(vGetCartData)
+    }
+}
+
+const addCartData = (url, param) => {
+    if (vAddCartData === null) {
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(param)
+        }).then(r => r.json()
+            .then(data => ({
+                status: r.status, body: data
+            })
+            ))
+            .then(obj => {
+                return obj.body
+            })
+            .catch(err => {
+                return err
+            });
+    }
+    else {
+        return Promise.resolve(vAddCartData)
     }
 }
 
 export {
-    getProdData, addCartData
+    getProdData, addCartData, getCartData
 };

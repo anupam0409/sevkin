@@ -6,11 +6,11 @@ function Hero() {
             <div className="hero-area hero-bg" >
                 <div className="container" >
                     <div className="row" >
-                        <div className="col-lg-12" style={{marginTop:'120px',marginBottom:'120px'}}>
+                        <div className="col-lg-12 pt-150 pb-150">
                             <div className="hero-text">
                                 <div className="hero-text-tablecell">
                                     <div className="row">
-                                        <div className="col-8">
+                                        {/*<div className="col-lg-6 col-md-6">
                                             <div id="demo" className="carousel slide" data-ride="carousel">
                                                 <ul className="carousel-indicators">
                                                     <li data-target="#demo" data-slide-to="0" className="active"></li>
@@ -38,8 +38,8 @@ function Hero() {
                                                     <span className="carousel-control-next-icon"></span>
                                                 </a>
                                             </div>
-                                        </div>
-                                        <div className="col-4 text-center">
+                                        </div>*/}
+                                        <div className="text-center">
                                             <p className="subtitle">Taste of India</p>
                                             <h3>Delicious Crunchy Snacks</h3>
                                             <div className="hero-btns">

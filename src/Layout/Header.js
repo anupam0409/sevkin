@@ -15,6 +15,7 @@ function Header() {
   const [showError, setShowError] = useState(false);
   const [loginShow, setLoginShow] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
+
   const navigate = useNavigate();
   const handleDrawerClose = () => setShowDrawer(false);
   const handleClose = () => { setLoginShow(false); setSearchShow(false) };
@@ -94,7 +95,7 @@ function Header() {
                       <img className="icon-style" src="/sevkin/assets/img/icon/call.png" alt='call'></img></Link></li>
                     {sessionStorage.getItem('username') === null ? <li className='nav-item'><Link onClick={handleLoginShow}><img className="icon-style"
                       src="/sevkin/assets/img/icon/user.png" alt='user'></img></Link></li> :
-                      <li style={{ color: 'whitesmoke', padding: '18px' }} className='nav-item'>Hi {sessionStorage.getItem('username')}!<ul class="sub-menu">
+                      <li style={{ color: 'whitesmoke', padding: '18px' }} className='nav-item'>Hi {sessionStorage.getItem('username')}!<ul className="sub-menu">
                         <li><a href="#logoutSuccessful" onClick={doLogout}><img className="icon-style"
                           src="/sevkin/assets/img/icon/logout.png" alt='cart'></img> Logout</a></li>
 
@@ -113,7 +114,7 @@ function Header() {
       </div >
       <a href="#!" onClick={() => {
         setShowDrawer(true)
-      }} class="float">
+      }} className="float">
         <img className="icon-style my-float"
           src="/sevkin/assets/img/icon/all.png" alt='chat'></img>
       </a>
@@ -149,8 +150,7 @@ function Header() {
           </Modal.Body>
           <Modal.Footer style={{ backgroundColor: '#47555D', justifyContent: 'space-between' }}>
             <small className='text-light font-italic'>© 2025 sevkin.com, Inc. or its affiliates</small>
-            <Button variant="outline-warning" className="bordered-btn" onClick={handleClose}>Cancel</Button>
-            <Button variant="warning" className="boxed-btn" type='submit'>Login</Button>
+            <Button variant="warning" className="boxed-btn" type='submit'>Continue</Button>
 
           </Modal.Footer>
         </form>
@@ -160,35 +160,35 @@ function Header() {
           <Offcanvas.Title>Hello, {sessionStorage.getItem('username') !== null ? sessionStorage.getItem('username') + '!' : 'Guest!'}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>
-          <h6 class="bg-body-tertiary p-2">Trending</h6>
-          <ul class="list-group list-group-light mb-4">
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Exciting Flavours</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Newly Launched</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Best Sellers</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Women's Special Combo</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Mixtures of Ratlam</button>
+          <h6 className="bg-body-tertiary p-2">Trending</h6>
+          <ul className="list-group list-group-light mb-4">
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Exciting Flavours</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Newly Launched</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Best Sellers</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Women's Special Combo</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Mixtures of Ratlam</button>
           </ul>
-          <h6 class="bg-body-tertiary p-2">Choose by Category</h6>
-          <ul class="list-group list-group-light mb-4">
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Sev</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Gathiya</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Chips</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Namkeen</button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Nuts</button>
+          <h6 className="bg-body-tertiary p-2">Choose by Category</h6>
+          <ul className="list-group list-group-light mb-4">
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Sev</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Gathiya</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Chips</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Namkeen</button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Nuts</button>
           </ul>
-          <h6 class="bg-body-tertiary p-2">Help and Settings</h6>
-          <ul class="list-group list-group-light mb-4">
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Your Account</button>
-            <button type='button' class="list-group-item d-flex justify-content-between align-items-center border-0 text-white">Wallet<span class="badge badge-light rounded-pill text-dark">₹0</span></button>
-            <button type='button' class="list-group-item list-group-item-action px-3 border-0 text-white">Admin Service</button>
+          <h6 className="bg-body-tertiary p-2">Help and Settings</h6>
+          <ul className="list-group list-group-light mb-4">
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Your Account</button>
+            <button type='button' className="list-group-item d-flex justify-content-between align-items-center border-0 text-white">Wallet<span className="badge badge-light rounded-pill text-dark">₹0</span></button>
+            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Admin Service</button>
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
-      <Toast show={showSuccess} style={{ backgroundImage: 'linear-gradient(#4BB543,#87cc80)', color: 'white', fontSize: '15px' }}>
-        <Toast.Body><b>Login Successful</b></Toast.Body>
+      <Toast show={showSuccess} style={{ backgroundImage: 'linear-gradient(#4BB543,#87cc80)', color: 'white', fontSize: '15px', borderLeft: '4px solid green'}}>
+        <Toast.Body><img style={{padding:'8px'}} src="/sevkin/assets/img/icon/success.png" alt="sevkin" height={50} width={50}/>&nbsp;<b>Login Successful</b></Toast.Body>
       </Toast>
-      <Toast show={showError} style={{ backgroundImage: 'linear-gradient(#DC3545,#ee7b7b)', color: 'white', fontSize: '15px' }}>
-        <Toast.Body><b>Invalid Credentials</b></Toast.Body>
+      <Toast show={showError} style={{ backgroundImage: 'linear-gradient(#DC3545,#ee7b7b)', color: 'white', fontSize: '15px', borderLeft : '4px solid red'}}>
+        <Toast.Body><img src="/sevkin/assets/img/icon/error.png" alt="sevkin" height={50} width={50}/><b>Invalid Credentials</b></Toast.Body>
       </Toast>
     </div>
   );
