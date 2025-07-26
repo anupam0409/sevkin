@@ -5,8 +5,11 @@ import Footer from '../Layout/Footer'
 import Clientlogo from '../Layout/Clientlogo';
 import { addCartApiUrl, getCartApiUrl } from '../Properties/AppConfig';
 import { addCartData, getCartData } from '../Service/ProdService';
+import { ShowErrorCall } from '../Service/Util';
 
 const Cart = () => {
+    const [errMessage, setErrorMessage] = React.useState(null)
+
     const [quantity, setQuantity] = React.useState([])
 
     const [useEffectCallCount, setUseEffectCallCount] = React.useState(0)
@@ -39,9 +42,12 @@ const Cart = () => {
             "username": username
         }
         getCartData(postUrl, getDataString).then(obj => {
-            if (obj) {
-                console.log(obj.data)
+            if (obj.data) {
                 setUserCartData(obj.data)
+            }
+            else {
+                console.log('err')
+                setErrorMessage('Server Error')
             }
         })
     }
@@ -55,7 +61,7 @@ const Cart = () => {
         let price = (new URLSearchParams(window.location.search)).get("price")
         let username = sessionStorage.getItem('username')
 
-        if (username !== null && userCartData.length === 0 && useEffectCallCount === 0) {
+        if (username !== null && !userCartData?.length && useEffectCallCount === 0) {
             if (pcode != null && size != null && price != null) {
                 addLoggedInUserCartData(pcode, price, size, username);
             }
@@ -70,6 +76,7 @@ const Cart = () => {
     return (
         <div>
             <Header />
+            {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
             <div className="breadcrumb-section breadcrumb-bg">
                 <div className="container">
                     <div className="row">
@@ -83,34 +90,31 @@ const Cart = () => {
                 </div>
             </div>
             <div className="cart-section">
-                {sessionStorage.getItem('username') !== null && userCartData.length > 0 ? <div className="container">
+                {sessionStorage.getItem('username') === null || !userCartData?.length ? <div className='text-center'><img className='oc-empty-cart'
+                    src="/sevkin/assets/img/icon/oc-empty-cart.svg" alt='cart'></img><br /><p className="empty-cart-text">Your cart is currently empty.</p> <a href="/craving" className="boxed-btn">Start Shopping</a><br /><br />
+                    <p>Before proceed to checkout you must add some products to your sevkin cart.<br />You will find a lot of interesting products on our "Craving" page.</p><br /></div> : <div className="container">
                     <br />
                     <a href="/craving" className="boxed-btn">Continue Shopping</a>
                     <br /><br />
                     <div className="row">
-                        <div className="col-lg-8 col-md-12">
+                        <div className="col-lg-6 col-md-12">
                             <div className="cart-table-wrap">
-                                <table className="cart-table">
-                                    <thead className="cart-table-head">
-                                        <tr className="table-head-row">
-                                            <th className="product-image">Product Image</th>
-                                            <th className="product-name">Name</th>
-                                            <th className="product-size">Size</th>
-                                            <th className="product-price">Price</th>
-                                            <th className="product-quantity">Quantity</th>
-                                            <th className="product-total">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {userCartData?.map((item, index) => (
-                                            <tr className="table-body-row" key={index}>
-                                                <td className="product-image"><img src={`/sevkin/assets/img/products/${item.image}`}
-                                                    alt="img" /></td>
-                                                <td className="product-name">{item.name}<br /><small className='text-muted'>{item.description}</small></td>
-                                                <td className="product-size">{item.size}</td>
-                                                <td className="product-price">₹{item.price}</td>
-                                                <td className="product-quantity">
-                                                    <select size="sm" style={{ width: '40%' }}
+                                <div class="card single-accordion2">
+                                    <div class="card-header"><h5 className='font-weight-bold'><img className="icon-style"
+                                        src="/sevkin/assets/img/icon/shoppingbag.png" alt='shoppingbag' />&nbsp;Shopping Bag</h5></div>
+                                    {userCartData?.map((item, index) => (
+                                        <div className="row user-cart">
+
+                                            <div className="col-sm-3">
+                                                <img className="cart-product-image"
+                                                    src={`/sevkin/assets/img/products/${item.image}`}
+                                                    alt="img" /></div>
+                                            <div className="col-sm-7">
+                                                <div class="card-body">
+                                                    <h5 class="card-title font-weight-bold">{item.name}</h5>
+                                                    <h6 class="card-text">{item.description}</h6>
+                                                    <h6>Size: {item.size}</h6><br />
+                                                    <h6>Qty: <select size="sm" style={{ width: '15%' }}
                                                         onChange={(e) => {
                                                             handleChangeQuantity(e, { index });
                                                         }}
@@ -118,62 +122,77 @@ const Cart = () => {
                                                         {quantOption.map((option) => (
                                                             <option value={option.value}>{option.label}</option>
                                                         ))}
-                                                    </select>
-                                                </td>
-                                                <td className="product-total">₹{parseFloat(item.price) * parseFloat(quantity)}</td>
-                                                <td className="product-remove"><a href="#!"><img className="icon-style"
-                                                    src="/sevkin/assets/img/icon/close-black.png" alt="close" /></a></td>
-                                            </tr>
-                                        ))}
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4">
-                            <div className="total-section">
-                                <table className="total-table">
-                                    <thead className="total-table-head">
-                                        <tr className="table-total-row">
-                                            <th>Total</th>
-                                            <th>Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr className="total-data">
-                                            <td><strong>Subtotal: </strong></td>
-                                            <td>₹500</td>
-                                        </tr>
-                                        <tr className="total-data">
-                                            <td><strong>Shipping: </strong></td>
-                                            <td>₹45</td>
-                                        </tr>
-                                        <tr className="total-data">
-                                            <td><strong>Total: </strong></td>
-                                            <td>₹545</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div className="cart-buttons">
-                                    <a href="cart.html" className="boxed-btn">Update Cart</a>
-                                    <a href="checkout.html" className="boxed-btn black">Check Out</a>
-                                </div>
-                            </div>
-
-                            <div className="coupon-section">
-                                <h3>Apply Coupon</h3>
-                                <div className="coupon-form-wrap">
-                                    <form action="index.html">
-                                        <p><input type="text" placeholder="Coupon" /></p>
-                                        <p><input type="submit" value="Apply" /></p>
-                                    </form>
+                                                    </select></h6><br />
+                                                    <h4 className='font-weight-bold'>₹{item.price}</h4><br />
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-2">
+                                                <button type="button" class="btn-close btn-cart-remove" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    </div></div> : <div className='text-center'><img className='oc-empty-cart'
-                        src="/sevkin/assets/img/icon/oc-empty-cart.svg" alt='cart'></img><br /><p className="empty-cart-text">Your cart is currently empty.</p><br />
-                    <p>Before proceed to checkout you must add some products to your sevkin cart.<br />You will find a lot of interesting products on our "Craving" page.</p><br /></div>}
+                        <div className="col-lg-3">
+                            <div className="accordion" id="accordionExample">
+                                <div className="card single-accordion">
+                                    <div className="card-header" id="headingOne">
+                                        <h5 className="mb-0">
+                                            <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <img className="icon-style"
+                                                    src="/sevkin/assets/img/icon/coupon.png" alt='coupon' />&nbsp;Apply Coupon
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div className="card-body">
+                                            <div className="coupon-form-wrap">
+                                                <form action="index.html">
+                                                    <p><input type="text" placeholder="Coupon Code" /></p>
+                                                    <p><a href="cart.html" className="boxed-btn">Apply</a></p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card single-accordion">
+                                    <div className="card-header" id="headingTwo">
+                                        <h5 className="mb-0">
+                                            <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <img className="icon-style"
+                                                    src="/sevkin/assets/img/icon/wallet.png" alt='wallet' />&nbsp;Use Wallet
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div className="card-body">
+                                            <div className="shipping-address-form">
+                                                <h6>Available balance: 0.00</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3">
+                            <div class="card single-accordion2">
+                                <div class="card-header"><h5 className='mb-0'><img className="icon-style"
+                                    src="/sevkin/assets/img/icon/pricetag.png" alt='pricetag' />&nbsp;Price Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Total MRP:</h6>
+                                    <h6 class="card-title">Discount on MRP:</h6>
+                                    <h6 class="card-title">Coupon Discount:</h6>
+                                    <h6 class="card-title">Shipping:</h6>
+                                    <h6 class="card-title">Total Amount:</h6><br />
+                                    <a href="#!" className="boxed-btn">CheckOut</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div></div>}
             </div>
             <Clientlogo />
             <Footer />

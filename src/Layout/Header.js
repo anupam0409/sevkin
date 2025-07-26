@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Toast from 'react-bootstrap/Toast';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -8,11 +7,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getProdApiUrl, loginApiUrl } from '../Properties/AppConfig';
 import { getProdData } from '../Service/ProdService';
 import { doLoginData } from '../Service/UserService';
+import { ShowErrorCall, ShowSuccessCall, validateUsernamePassword } from '../Service/Util';
 
 function Header() {
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = React.useState(null);
+  const [errMessage, setErrorMessage] = React.useState(null);
   const [showDrawer, setShowDrawer] = useState(false);
-  const [showError, setShowError] = useState(false);
   const [loginShow, setLoginShow] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
 
@@ -22,12 +22,18 @@ function Header() {
   const handleSearchShow = () => setSearchShow(true);
   const handleLoginShow = () => setLoginShow(true);
 
+
   const getProduct = (e) => {
     let getUrl = getProdApiUrl
     getProdData(getUrl).then(obj => {
       if (obj.data) {
         navigate("/craving", { state: { prodList: obj.data } })
       }
+      else {
+        setErrorMessage('Server Error')
+      }
+    }).catch(err => {
+      setErrorMessage('Server Error')
     })
   }
   const doLogout = (e) => {
@@ -40,24 +46,27 @@ function Header() {
     const formData = new FormData(form);
     let postUrl = loginApiUrl
     let getDataString = { "username": formData.get('username'), "password": formData.get('password') }
-    doLoginData(postUrl, getDataString).then(obj => {
-      if (obj.status === 'OK') {
-        sessionStorage.setItem('username', obj.data[0].username)
-        setShowSuccess(true)
-        setLoginShow(false)
-        setTimeout(function () {
-          setShowSuccess(false)
-        }, 2000);
-      }
-      if (obj.status === 'NOK') {
-        setShowError(true)
-        setLoginShow(false)
-        setTimeout(function () {
-          setShowError(false)
-        }, 2000);
-      }
 
-    })
+    const validationResult = validateUsernamePassword(getDataString.username, getDataString.password);
+
+    if (validationResult.isValid) {
+      doLoginData(postUrl, getDataString).then(obj => {
+        if (obj.status === 'OK') {
+          sessionStorage.setItem('username', obj.data[0].username)
+          setLoginShow(false)
+          setSuccessMessage('Login Successful')
+        } else if (obj.status === 'NOK') {
+          setLoginShow(false)
+          setErrorMessage('Invalid Credentials')
+        } else {
+          setLoginShow(false)
+          setErrorMessage('Server Error')
+        }
+      })
+    } else {
+      setLoginShow(false)
+      setErrorMessage(validationResult.errors)
+    }
   }
 
   React.useEffect(() => {
@@ -69,7 +78,7 @@ function Header() {
   }, [])
 
   return (
-    <div className="top-header-area">
+    <div className="top-header-area" id="sticker">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 col-sm-12 text-center">
@@ -184,12 +193,9 @@ function Header() {
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
-      <Toast show={showSuccess} style={{ backgroundImage: 'linear-gradient(#4BB543,#87cc80)', color: 'white', fontSize: '15px', borderLeft: '4px solid green'}}>
-        <Toast.Body><img style={{padding:'8px'}} src="/sevkin/assets/img/icon/success.png" alt="sevkin" height={50} width={50}/>&nbsp;<b>Login Successful</b></Toast.Body>
-      </Toast>
-      <Toast show={showError} style={{ backgroundImage: 'linear-gradient(#DC3545,#ee7b7b)', color: 'white', fontSize: '15px', borderLeft : '4px solid red'}}>
-        <Toast.Body><img src="/sevkin/assets/img/icon/error.png" alt="sevkin" height={50} width={50}/><b>Invalid Credentials</b></Toast.Body>
-      </Toast>
+      {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
+      {successMessage != null ? <ShowSuccessCall message={successMessage} /> : null}
+
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import React, { Component, Suspense } from 'react';
-import { Route, Switch, Redirect, Outlet } from 'react-router-dom';
+import { Component } from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from '../Layout/Header'
 import Copyright from '../Layout/Copyright'
 import Footer from '../Layout/Footer'

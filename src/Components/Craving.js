@@ -7,9 +7,11 @@ import Clientlogo from '../Layout/Clientlogo';
 import Isotope from 'isotope-layout';
 import { getProdApiUrl } from '../Properties/AppConfig';
 import { getProdData } from '../Service/ProdService';
-
+import { ShowErrorCall } from '../Service/Util';
 
 const Craving = () => {
+    const [errMessage, setErrorMessage] = React.useState(null)
+    
     const isotope = React.useRef()
 
     const [filterKey, setFilterKey] = React.useState('*')
@@ -22,6 +24,9 @@ const Craving = () => {
             getProdData(getUrl).then(obj => {
                 if (obj.data) {
                     setProdList(obj.data)
+                }
+                else{
+                    setErrorMessage('Server Error')
                 }
             })
         }
@@ -50,6 +55,8 @@ const Craving = () => {
     return (
         <div>
             <Header />
+            {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
+
             <div className="breadcrumb-section breadcrumb-bg">
                 <div className="container">
                     <div className="row">
@@ -63,7 +70,7 @@ const Craving = () => {
                 </div>
             </div>
             <div className="product-section">
-                <br/>
+                <br />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -84,12 +91,15 @@ const Craving = () => {
                             <div className={`col-lg-2 col-md-6 text-center filter-item ${item.category}`} key={index}>
                                 <div className="single-product-item">
                                     <div className="product-image">
+                                        <div id="product-badge">
+                                            {item.off}% <br /><small>off</small>
+                                        </div>
                                         <Link to="/subcraving"><img src={`/sevkin/assets/img/products/${item.image}`}
                                             alt={item.image} /></Link>
                                     </div>
                                     <h3>{item.name}</h3>
                                     <p className="product-price"><span>{item.size}</span> ₹{item.price}</p>
-                                    <a href={`/cart?pcode=${item.id}&size=${item.size}&price=${item.price}`} className="cart-btn"><img className="icon-style"
+                                    <a href={`/cart?pcode=${encodeURIComponent(item.id)}&size=${encodeURIComponent(item.size)}&price=${encodeURIComponent(item.price)}`} className="cart-btn"><img className="icon-style"
                                         src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>
                                 </div>
                             </div>
