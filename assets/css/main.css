@@ -1948,6 +1948,40 @@ span.comment-date {
   color: #051922;
 }
 
+.career-form select,
+input {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 100%;
+  color: grey;
+  background-color: white;
+}
+
+.career-form form {
+  padding: 50px;
+}
+
+.half-rule {
+  margin-left: 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.recent-jobs {
+  padding-bottom: 80px;
+  padding-top: 80px;
+  font-size: 15px;
+}
+
+.job-process {
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
 .comment-template form p input[type=email] {
   border: 1px solid #ddd;
   width: 49%;
@@ -2325,15 +2359,15 @@ a.video-play-btn {
 }
 
 .team-bg-1 {
-  background-image: url(../img/team/team-1.jpg);
+  background-image: url(../img/team/mem1.png);
 }
 
 .team-bg-2 {
-  background-image: url(../img/team/team-2.jpg);
+  background-image: url(../img/team/mem2.png);
 }
 
 .team-bg-3 {
-  background-image: url(../img/team/team-3.jpg);
+  background-image: url(../img/team/mem3.png);
 }
 
 .team-bg-4 {
@@ -2844,8 +2878,11 @@ tr.total-data td strong {
   border: none;
   background-color: #EFEFEF;
   position: relative;
-  padding-left: 50px;
   font-weight: 600;
+}
+
+.card.single-accordion2 .card-header h5 img {
+  margin-bottom: 6px;
 }
 
 .card.single-accordion2 .card-header h5 {
@@ -2859,7 +2896,6 @@ tr.total-data td strong {
   border: none;
   background-color: #EFEFEF;
   position: relative;
-  padding-left: 50px;
   font-weight: 600;
 }
 
