@@ -6,6 +6,7 @@ import { HashRouter, Route, Routes, BrowserRouter as Router, Switch } from 'reac
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
+import Career from './Components/Career';
 import Craving from './Components/Craving';
 import Checkout from './Components/Checkout';
 import Cart from './Components/Cart';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/sevkin" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/craving" element={<Craving />} />
         <Route path="/subcraving" element={<Subcraving />} />

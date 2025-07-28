@@ -11,7 +11,7 @@ import { ShowErrorCall } from '../Service/Util';
 
 const Craving = () => {
     const [errMessage, setErrorMessage] = React.useState(null)
-    
+
     const isotope = React.useRef()
 
     const [filterKey, setFilterKey] = React.useState('*')
@@ -25,7 +25,7 @@ const Craving = () => {
                 if (obj.data) {
                     setProdList(obj.data)
                 }
-                else{
+                else {
                     setErrorMessage('Server Error')
                 }
             })
@@ -37,6 +37,8 @@ const Craving = () => {
             isotope.current = new Isotope('.product-lists', {
                 itemSelector: '.filter-item',
                 layoutMode: 'fitRows',
+                transitionDuration: '0.6s'
+
             })
             return () => isotope.current.destroy()
         }
@@ -48,6 +50,7 @@ const Craving = () => {
                 ? isotope.current.arrange({ filter: `*` })
                 : isotope.current.arrange({ filter: `.${filterKey}` })
         }
+        
     }, [filterKey, prodList])
 
     const handleFilterKeyChange = key => () => setFilterKey(key)
@@ -76,12 +79,12 @@ const Craving = () => {
                         <div className="col-md-12">
                             <div className="product-filters">
                                 <ul>
-                                    <li className="active" data-filter="*" onClick={handleFilterKeyChange('*')}>All</li>
-                                    <li data-filter=".sev" onClick={handleFilterKeyChange('sev')}>Sev</li>
-                                    <li data-filter=".chips" onClick={handleFilterKeyChange('chips')}>Chips</li>
-                                    <li data-filter=".nuts" onClick={handleFilterKeyChange('nuts')}>Nuts</li>
-                                    <li data-filter=".gathiya" onClick={handleFilterKeyChange('gathiya')}>Ghathiya</li>
-                                    <li data-filter=".namkeen" onClick={handleFilterKeyChange('namkeen')}>Namkeen</li>
+                                    <li className="active boxed-btn" data-filter="*" onClick={handleFilterKeyChange('*')}>All</li>
+                                    <li className="boxed-btn" data-filter=".sev" onClick={handleFilterKeyChange('sev')}>Sev</li>
+                                    <li className="boxed-btn" data-filter=".chips" onClick={handleFilterKeyChange('chips')}>Chips</li>
+                                    <li className="boxed-btn" data-filter=".nuts" onClick={handleFilterKeyChange('nuts')}>Nuts</li>
+                                    <li className="boxed-btn" data-filter=".gathiya" onClick={handleFilterKeyChange('gathiya')}>Ghathiya</li>
+                                    <li className="boxed-btn" data-filter=".namkeen" onClick={handleFilterKeyChange('namkeen')}>Namkeen</li>
                                 </ul>
                             </div>
                         </div>

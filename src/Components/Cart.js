@@ -97,14 +97,13 @@ const Cart = () => {
                     <a href="/craving" className="boxed-btn">Continue Shopping</a>
                     <br /><br />
                     <div className="row">
-                        <div className="col-lg-6 col-md-12">
+                        <div className="col-lg-6 col-md-12 p-2">
                             <div className="cart-table-wrap">
                                 <div class="card single-accordion2">
                                     <div class="card-header"><h5 className='font-weight-bold'><img className="icon-style"
                                         src="/sevkin/assets/img/icon/shoppingbag.png" alt='shoppingbag' />&nbsp;Shopping Bag</h5></div>
                                     {userCartData?.map((item, index) => (
                                         <div className="row user-cart">
-
                                             <div className="col-sm-3">
                                                 <img className="cart-product-image"
                                                     src={`/sevkin/assets/img/products/${item.image}`}
@@ -134,7 +133,7 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-3 col-md-12 p-2">
                             <div className="accordion" id="accordionExample">
                                 <div className="card single-accordion">
                                     <div className="card-header" id="headingOne">
@@ -176,7 +175,7 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-3 col-md-12 p-2">
                             <div class="card single-accordion2">
                                 <div class="card-header"><h5 className='mb-0'><img className="icon-style"
                                     src="/sevkin/assets/img/icon/pricetag.png" alt='pricetag' />&nbsp;Price Details</h5>

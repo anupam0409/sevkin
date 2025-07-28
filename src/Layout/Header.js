@@ -93,6 +93,7 @@ function Header() {
                   <ul className='navbar-nav ml-auto justify-content-between'>
                     <li className="nav-item active"><Link to="/home">Home</Link></li>
                     <li className='nav-item'><Link to="/about">About</Link></li>
+                    <li className='nav-item'><Link to="/career">Career</Link></li>
                     <li className='nav-item'><Link to="/contact">Contact</Link></li>
                     <li className='nav-item'><Link onClick={getProduct}>Craving</Link></li>
                     <li className='nav-item'><Link to="/checkout">CheckOut</Link></li>

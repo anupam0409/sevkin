@@ -94,10 +94,8 @@ export class Checkout extends Component {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
                             <div className="col-lg-4">
                                 <div className="order-details-wrap">
                                     <table className="order-details">
