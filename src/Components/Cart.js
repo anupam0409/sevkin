@@ -1,25 +1,45 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Layout/Header'
 import Copyright from '../Layout/Copyright'
 import Footer from '../Layout/Footer'
 import Clientlogo from '../Layout/Clientlogo';
-import { addCartApiUrl, getCartApiUrl } from '../Properties/AppConfig';
-import { addCartData, getCartData } from '../Service/ProdService';
-import { ShowErrorCall } from '../Service/Util';
+import { addCartApiUrl, getCartApiUrl, updateCartApiUrl, deleteCartApiUrl } from '../Properties/AppConfig';
+import { addCartData, getCartData, updateCartData, deleteCartData } from '../Service/ProdService';
+import { ShowErrorCall, ShowSuccessCall } from '../Service/Util';
 
 const Cart = () => {
-    const [errMessage, setErrorMessage] = React.useState(null)
+    const navigate = useNavigate();
 
-    const [quantity, setQuantity] = React.useState([])
+    const [successMessage, setSuccessMessage] = React.useState(null);
+
+    const [errMessage, setErrorMessage] = React.useState(null)
 
     const [useEffectCallCount, setUseEffectCallCount] = React.useState(0)
 
     const [userCartData, setUserCartData] = React.useState([])
 
-    const handleChangeQuantity = (e, index) => {
-        const newQuants = [...quantity];
-        newQuants[index] = e.target.value;
-        setQuantity(newQuants);
+    const handleChangeQuantity = (e, cartid) => {
+        updateLoggedInUserCartData(cartid, parseInt(e.target.value))
+    };
+
+    const handleProceedToCheckout = () => {
+        if (userCartData.length === 0) {
+            alert('Your cart is empty. Please add some items.');
+            return;
+        }
+
+        const orderDetails = {
+            items: userCartData,
+            subtotal: totalMRPPrice,
+            discount: (totalMRPPrice * 0.10).toFixed(2),
+            shipping: 0,
+            payable: (totalMRPPrice - (totalMRPPrice * 0.10)).toFixed(2)
+        };
+
+        // Navigate to the checkout page, passing state
+        // 'state' is a common way to pass data during navigation in React Router v6
+        navigate('/checkout', { state: { orderDetails } });
     };
     function addLoggedInUserCartData(pcode, price, size, username) {
         let postUrl = addCartApiUrl
@@ -32,10 +52,35 @@ const Cart = () => {
         }
         addCartData(postUrl, getDataString).then(obj => {
             if (obj.status === 'OK') {
+                setSuccessMessage('Product added to Cart')
                 getLoggedInUserCartData(username)
+                navigate('/cart')
             }
         })
     }
+    function updateLoggedInUserCartData(cartid, quantity) {
+        let postUrl = updateCartApiUrl
+        let getDataString = {
+            "cartid": cartid,
+            "quantity": quantity
+        }
+        updateCartData(postUrl, getDataString).then(obj => {
+            if (obj.status === 'OK') {
+                window.location.reload();
+            }
+        })
+    }
+    const deleteLoggedInUserCartData = (cartid) => {
+        let postUrl = deleteCartApiUrl
+        let getDataString = {
+            "cartid": cartid
+        }
+        deleteCartData(postUrl, getDataString).then(obj => {
+            if (obj.status === 'OK') {
+                window.location.reload();
+            }
+        })
+    };
     function getLoggedInUserCartData(username) {
         let postUrl = getCartApiUrl
         let getDataString = {
@@ -54,6 +99,8 @@ const Cart = () => {
     const quantOption = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
         item => ({ label: item, value: item })
     );
+
+    const totalMRPPrice = userCartData.reduce((sum, cart) => sum + cart.price, 0);
 
     React.useEffect(() => {
         let pcode = (new URLSearchParams(window.location.search)).get("pcode")
@@ -76,7 +123,6 @@ const Cart = () => {
     return (
         <div>
             <Header />
-            {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
             <div className="breadcrumb-section breadcrumb-bg">
                 <div className="container">
                     <div className="row">
@@ -99,34 +145,34 @@ const Cart = () => {
                     <div className="row">
                         <div className="col-lg-6 col-md-12 p-2">
                             <div className="cart-table-wrap">
-                                <div class="card single-accordion2">
-                                    <div class="card-header"><h5 className='font-weight-bold'><img className="icon-style"
+                                <div className="card single-accordion2">
+                                    <div className="card-header"><h5 className='font-weight-bold'><img className="icon-style"
                                         src="/sevkin/assets/img/icon/shoppingbag.png" alt='shoppingbag' />&nbsp;Shopping Bag</h5></div>
                                     {userCartData?.map((item, index) => (
-                                        <div className="row user-cart">
+                                        <div className="row user-cart" key={index}>
                                             <div className="col-sm-3">
                                                 <img className="cart-product-image"
                                                     src={`/sevkin/assets/img/products/${item.image}`}
                                                     alt="img" /></div>
                                             <div className="col-sm-7">
-                                                <div class="card-body">
-                                                    <h5 class="card-title font-weight-bold">{item.name}</h5>
-                                                    <h6 class="card-text">{item.description}</h6>
+                                                <div className="card-body">
+                                                    <h5 className="card-title font-weight-bold">{item.name}</h5>
+                                                    <h6 className="card-text">{item.description}</h6>
                                                     <h6>Size: {item.size}</h6><br />
                                                     <h6>Qty: <select size="sm" style={{ width: '15%' }}
                                                         onChange={(e) => {
-                                                            handleChangeQuantity(e, { index });
+                                                            handleChangeQuantity(e, item.cartid);
                                                         }}
-                                                        value={quantity}>
+                                                        value={item.quantity}>
                                                         {quantOption.map((option) => (
                                                             <option value={option.value}>{option.label}</option>
                                                         ))}
                                                     </select></h6><br />
-                                                    <h4 className='font-weight-bold'>₹{item.price}</h4><br />
+                                                    <h4 id={`item-price${index}`} className='font-weight-bold'>₹{item.price.toFixed(2)}</h4><br />
                                                 </div>
                                             </div>
                                             <div className="col-sm-2">
-                                                <button type="button" class="btn-close btn-cart-remove" aria-label="Close"></button>
+                                                <button type="button" onClick={() => deleteLoggedInUserCartData(item.cartid)} className="btn-close btn-cart-remove" aria-label="Close"></button>
                                             </div>
                                         </div>
                                     ))}
@@ -144,7 +190,6 @@ const Cart = () => {
                                             </button>
                                         </h5>
                                     </div>
-
                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div className="card-body">
                                             <div className="coupon-form-wrap">
@@ -176,18 +221,19 @@ const Cart = () => {
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-12 p-2">
-                            <div class="card single-accordion2">
-                                <div class="card-header"><h5 className='mb-0'><img className="icon-style"
+                            <div className="card single-accordion2">
+                                <div className="card-header"><h5 className='mb-0'><img className="icon-style"
                                     src="/sevkin/assets/img/icon/pricetag.png" alt='pricetag' />&nbsp;Price Details</h5>
                                 </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Total MRP:</h6>
-                                    <h6 class="card-title">Discount on MRP:</h6>
-                                    <h6 class="card-title">Coupon Discount:</h6>
-                                    <h6 class="card-title">Shipping:</h6>
-                                    <h6 class="card-title">Total Amount:</h6><br />
-                                    <a href="#!" className="boxed-btn">CheckOut</a>
+                                <div className="card-body">
+                                    <p><span class="left">Total MRP:</span><span class="right fs-6">₹{totalMRPPrice.toFixed(2)}</span></p><br />
+                                    <p><span class="left">10% Discount on MRP:</span><span class="right fs-6">₹{(totalMRPPrice * 0.10).toFixed(2)}</span></p><br />
+                                    <p><span class="left">Coupon Discount:</span><span class="right fs-6">NA</span></p><br />
+                                    <p><span class="left">Shipping:</span><span class="right fs-6"><del>₹12</del>&nbsp;Free</span></p><br />
+                                    <p><span class="right fs-4">₹{(totalMRPPrice - (totalMRPPrice * 0.10)).toFixed(2)}</span></p><br />
                                 </div>
+
+                                <p className='right p-3'><button onClick={handleProceedToCheckout} className="boxed-btn right">Proceed to Checkout</button></p>
                             </div>
                         </div>
                         <br />
@@ -196,6 +242,8 @@ const Cart = () => {
             <Clientlogo />
             <Footer />
             <Copyright />
+            {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
+            {successMessage != null ? <ShowSuccessCall message={successMessage} /> : null}
         </div >
     )
 }

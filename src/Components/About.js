@@ -1,17 +1,10 @@
-import React, { Component, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Component } from 'react';
 import Header from '../Layout/Header'
 import Copyright from '../Layout/Copyright'
 import Footer from '../Layout/Footer'
 import Clientlogo from '../Layout/Clientlogo';
-import News from '../Layout/News';
 import Shopbanner from '../Layout/Shopbanner';
-import Advertisement from '../Layout/Advertisement';
 import Testimonial from '../Layout/Testimonial';
-import Cartbanner from '../Layout/Cartbanner';
-import Product from '../Layout/Product';
-import Features from '../Layout/Features';
-import Hero from '../Layout/Hero';
 import Featured from '../Layout/Featured';
 import Team from '../Layout/Team';
 

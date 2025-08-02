@@ -8,7 +8,6 @@ import News from '../Layout/News';
 import Shopbanner from '../Layout/Shopbanner';
 import Advertisement from '../Layout/Advertisement';
 import Testimonial from '../Layout/Testimonial';
-import Cartbanner from '../Layout/Cartbanner';
 import Product from '../Layout/Product';
 import Features from '../Layout/Features';
 import Hero from '../Layout/Hero';
@@ -22,7 +21,6 @@ export class Home extends Component {
                 <Hero />
                 <Features />
                 <Product />
-                <Cartbanner />
                 <Testimonial />
                 <Advertisement />
                 <Shopbanner />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Header from '../Layout/Header'
 import Copyright from '../Layout/Copyright'
 import Footer from '../Layout/Footer'
@@ -12,9 +12,11 @@ import { ShowErrorCall } from '../Service/Util';
 const Craving = () => {
     const [errMessage, setErrorMessage] = React.useState(null)
 
+    const [searchParams] = useSearchParams();
+
     const isotope = React.useRef()
 
-    const [filterKey, setFilterKey] = React.useState('*')
+    const [filterKey, setFilterKey] = React.useState(searchParams.get('category') == null ? '*' : searchParams.get('category'))
 
     const [prodList, setProdList] = React.useState([])
 
@@ -50,16 +52,16 @@ const Craving = () => {
                 ? isotope.current.arrange({ filter: `*` })
                 : isotope.current.arrange({ filter: `.${filterKey}` })
         }
-        
+
     }, [filterKey, prodList])
 
     const handleFilterKeyChange = key => () => setFilterKey(key)
+
 
     return (
         <div>
             <Header />
             {errMessage != null ? <ShowErrorCall message={errMessage} /> : null}
-
             <div className="breadcrumb-section breadcrumb-bg">
                 <div className="container">
                     <div className="row">

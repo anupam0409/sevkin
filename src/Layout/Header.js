@@ -22,6 +22,15 @@ function Header() {
   const handleSearchShow = () => setSearchShow(true);
   const handleLoginShow = () => setLoginShow(true);
 
+  function decodeToken(token) {
+    if (token) {
+      try {
+        return JSON.parse(atob(token.split('.')[1]));
+      } catch (error) {
+        return error
+      }
+    }
+  }
 
   const getProduct = (e) => {
     let getUrl = getProdApiUrl
@@ -96,7 +105,6 @@ function Header() {
                     <li className='nav-item'><Link to="/career">Career</Link></li>
                     <li className='nav-item'><Link to="/contact">Contact</Link></li>
                     <li className='nav-item'><Link onClick={getProduct}>Craving</Link></li>
-                    <li className='nav-item'><Link to="/checkout">CheckOut</Link></li>
                     <li className='nav-item'><Link to="/cart"><img className="icon-style"
                       src="/sevkin/assets/img/icon/cart.png" alt='cart'></img></Link></li>
                     <li className='nav-item'> <Link onClick={handleSearchShow}><img className="icon-style"
@@ -108,7 +116,6 @@ function Header() {
                       <li style={{ color: 'whitesmoke', padding: '18px' }} className='nav-item'>Hi {sessionStorage.getItem('username')}!<ul className="sub-menu">
                         <li><a href="#logoutSuccessful" onClick={doLogout}><img className="icon-style"
                           src="/sevkin/assets/img/icon/logout.png" alt='cart'></img> Logout</a></li>
-
                       </ul></li>}
                   </ul>
                 </div>
@@ -122,12 +129,12 @@ function Header() {
           </div >
         </div >
       </div >
-      <a href="#!" onClick={() => {
+      <button onClick={() => {
         setShowDrawer(true)
-      }} className="float">
+      }} className="float-button">
         <img className="icon-style my-float"
           src="/sevkin/assets/img/icon/all.png" alt='chat'></img>
-      </a>
+      </button>
       <Modal show={searchShow} onHide={handleClose} style={{ borderColor: 'whitesmoke' }}>
         <Modal.Body className='search-modal' ><Form>
           <Form.Group
@@ -172,25 +179,25 @@ function Header() {
         <Offcanvas.Body style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>
           <h6 className="bg-body-tertiary p-2">Trending</h6>
           <ul className="list-group list-group-light mb-4">
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Exciting Flavours</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Newly Launched</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Best Sellers</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Women's Special Combo</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Mixtures of Ratlam</button>
+            <a  href="/craving" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Exciting Flavours</a>
+            <a  href="/craving" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Newly Launched</a>
+            <a href="/craving" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Best Sellers</a>
+            <a href="/craving" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Women's Special Combo</a>
+            <a href="/craving" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Mixtures of Ratlam</a>
           </ul>
           <h6 className="bg-body-tertiary p-2">Choose by Category</h6>
           <ul className="list-group list-group-light mb-4">
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Sev</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Gathiya</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Chips</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Namkeen</button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Nuts</button>
+            <a  href="/craving?category=sev" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Sev</a>
+            <a href="/craving?category=gathiya" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Gathiya</a>
+            <a href="/craving?category=chips" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Chips</a>
+            <a href="/craving?category=namkeen" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Namkeen</a>
+            <a href="/craving?category=nuts" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Nuts</a>
           </ul>
           <h6 className="bg-body-tertiary p-2">Help and Settings</h6>
           <ul className="list-group list-group-light mb-4">
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Your Account</button>
-            <button type='button' className="list-group-item d-flex justify-content-between align-items-center border-0 text-white">Wallet<span className="badge badge-light rounded-pill text-dark">₹0</span></button>
-            <button type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Admin Service</button>
+            <a href="/setting?on=account" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white" style={{ backgroundImage: 'linear-gradient(#1a2c35,#47555D)' }}>Your Account</a>
+            <a href="/setting?on=wallet" type='button' className="list-group-item d-flex justify-content-between align-items-center border-0 text-white">Wallet<span className="badge badge-light rounded-pill text-dark">₹0</span></a>
+            <a href="/setting?on=admin" type='button' className="list-group-item list-group-item-action px-3 border-0 text-white">Admin Service</a>
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

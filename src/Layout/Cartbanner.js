@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-function Cartbanner() {
+const Cartbanner = ({ timeLeft }) => {
     return (
         <div className="Cartbanner">
             <section className="cart-banner pt-100 pb-100">
@@ -26,20 +25,21 @@ function Cartbanner() {
                                 Indian flavors. Made from chickpea flour and spices, it promises a satisfying crunch with every
                                 bite.</div>
                             <div className="time-counter">
+                                {timeLeft.days !== null ? 
                                 <div className="time-countdown clearfix" data-countdown="2020/2/01">
                                     <div className="counter-column">
-                                        <div className="inner"><span className="count">00</span>Days</div>
+                                        <div className="inner"><span className="count">{timeLeft.days | 'NA'}</span>Days</div>
                                     </div>
                                     <div className="counter-column">
-                                        <div className="inner"><span className="count">00</span>Hours</div>
+                                        <div className="inner"><span className="count">{timeLeft.hours | 'NA'}</span>Hours</div>
                                     </div>
                                     <div className="counter-column">
-                                        <div className="inner"><span className="count">00</span>Mins</div>
+                                        <div className="inner"><span className="count">{timeLeft.minutes | 'NA'}</span>Mins</div>
                                     </div>
                                     <div className="counter-column">
-                                        <div className="inner"><span className="count">00</span>Secs</div>
+                                        <div className="inner"><span className="count">{timeLeft.seconds | 'NA'}</span>Secs</div>
                                     </div>
-                                </div>
+                                </div> : <p>Calculating...</p>}
                             </div>
                             <a href="cart.html" className="cart-btn mt-3"><img className="icon-style"
                                 src="/sevkin/assets/img/icon/cart.png" alt="cart"></img> Add to Cart</a>

@@ -3,7 +3,8 @@ import React from 'react';
 
 function Contactform() {
     return (
-        <div className="contact-from-section mt-150 mb-150">
+        <div className="contact-from-section">
+            <br/>
             <div className="container">
                 <div className="section-title text-center">
                     <h3><span className="orange-text text-center">Join</span> us as!</h3>

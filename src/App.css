@@ -50,3 +50,29 @@
     transform: rotate(360deg);
   }
 }
+
+/*them change*/
+
+/* src/App.css */
+/* Make sure this is loaded AFTER Bootstrap's CSS in your index.js */
+
+/* Override Bootstrap's primary button */
+.btn-primary {
+  background-color: #ff5733 !important; /* A bright orange */
+  border-color: #ff5733 !important;
+}
+
+.btn-primary:hover {
+  background-color: #e64a19 !important;
+  border-color: #e64a19 !important;
+}
+
+/* Change navbar background */
+.navbar-light {
+  background-color: #333 !important; /* Dark background */
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .nav-link {
+  color: #fff !important; /* White text */
+}

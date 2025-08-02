@@ -2,25 +2,62 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getProdApiUrl } from '../Properties/AppConfig';
 import { getProdData } from '../Service/ProdService';
-
-
+import Cartbanner from './Cartbanner';
 
 const Product = () => {
     const [prodList, setProdList] = React.useState([])
+
     React.useEffect(() => {
         if (prodList.length === 0) {
             let getUrl = getProdApiUrl
             getProdData(getUrl).then(obj => {
                 if (obj.data) {
-                    setProdList(obj.data)
+                    setProdList(obj.data.slice(0, 6))
                 }
             })
         }
     }, [prodList])
+
+    const [timeLeft, setTimeLeft] = React.useState({});
+
+    React.useEffect(() => {
+        const calculateTimeLeft = () => {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+
+            const endOfMonth = new Date(year, month + 1, 0, 23, 59, 59, 999);
+
+            const difference = endOfMonth.getTime() - now.getTime();
+
+            let timeLeft = {};
+
+            if (difference > 0) {
+                timeLeft = {
+                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                    seconds: Math.floor((difference / 1000) % 60),
+                };
+            } else {
+                timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+            }
+            return timeLeft;
+        };
+
+        setTimeLeft(calculateTimeLeft());
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <div className="ProductSection">
+        <div><div className="ProductSection">
             <div className="product-section mt-150 mb-150">
-                <div className="container">
+                <div className="container text-center">
                     <div className="row">
                         <div className="col-lg-8 offset-lg-2 text-center">
                             <div className="section-title">
@@ -49,8 +86,11 @@ const Product = () => {
                             </div>
                         ))}
                     </div>
+                    <a href="/craving" className="cart-btn mt-3">Load more...</a>
                 </div>
             </div>
+        </div>
+            <Cartbanner timeLeft={timeLeft} />
         </div>
     );
 }

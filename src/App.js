@@ -1,11 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import Login from "./Components/Login";
-import { HashRouter, Route, Routes, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
+import Setting from './Components/Setting';
 import Career from './Components/Career';
 import Craving from './Components/Craving';
 import Checkout from './Components/Checkout';
@@ -23,6 +22,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/setting" element={<Setting />} />
         <Route path="/craving" element={<Craving />} />
         <Route path="/subcraving" element={<Subcraving />} />
         <Route path="/checkout" element={<Checkout />} />
