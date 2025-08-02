@@ -456,6 +456,16 @@ a.boxed-btn {
   padding: 5px 10px;
 }
 
+button.boxed-btn {
+  border: none;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  background-color: #e0aa3e;
+  color: #fff;
+  padding: 5px 10px;
+}
+
 a.bordered-btn {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
@@ -479,6 +489,7 @@ a.read-more-btn:hover {
 }
 
 a.boxed-btn,
+button.boxed-btn,
 a.bordered-btn,
 a.cart-btn {
   border-radius: 50px;
@@ -532,6 +543,14 @@ a.cart-btn {
   color: #fff;
   margin: 0;
   margin-top: 20px;
+}
+
+.breadcrumb-text h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  margin-top: 10px;
 }
 
 .breadcrumb-section {
@@ -602,6 +621,12 @@ a.navbar-brand img {
   height: 20px;
   width: 20px;
   color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-style:hover {
+  transform: scale(1.1);
 }
 
 .rate-icon-style {
@@ -1140,7 +1165,18 @@ a.boxed-btn {
   transition: 0.3s;
 }
 
+button.boxed-btn {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
 a.boxed-btn:hover {
+  background-color: #051922;
+  color: #e0aa3e;
+}
+
+button.boxed-btn:hover {
   background-color: #051922;
   color: #e0aa3e;
 }
@@ -2899,6 +2935,11 @@ tr.total-data td strong {
   font-weight: 600;
 }
 
+.card.single-accordion2 .card-header h5 span img {
+  display: block;
+  margin-left: auto;
+}
+
 .card.single-accordion {
   border: 1px solid #F9F9F9;
 }
@@ -2927,6 +2968,39 @@ tr.total-data td strong {
   resize: none;
 }
 
+.shipping-address-form form p textarea {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  height: 120px;
+  resize: none;
+}
+
+.overview-address {
+  float: left;
+  width: 50%;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  height: 80px;
+  resize: none;
+}
+
+.overview-name {
+  float: left;
+  border: 1px solid #ddd;
+  width: 50%;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #051922;
+}
+
+.shipping-address-form {
+  padding: 20px;
+}
+
 .shipping-address-form p,
 .card-details p {
   margin: 0;
@@ -2949,7 +3023,7 @@ tr.total-data td strong {
 }
 
 table.order-details {
-  border: 1px solid #efefef;
+  border: 0;
 }
 
 table.order-details thead tr th {
@@ -2960,7 +3034,6 @@ table.order-details thead tr th {
 }
 
 table.order-details tbody td {
-  border: 1px solid #efefef;
   padding: 15px;
 }
 
@@ -3039,7 +3112,8 @@ table.order-details tbody td {
   position: absolute;
 }
 
-.float {
+.float-button{
+  border: 3px solid #e0aa3e;
   position: fixed;
   width: 40px;
   height: 40px;
@@ -3052,9 +3126,6 @@ table.order-details tbody td {
   box-shadow: 3px 3px 4px #999;
 }
 
-.my-float {
-  margin-top: 10px;
-}
 
 .oc-empty-cart {
   padding: 50px;
@@ -3096,4 +3167,88 @@ table.order-details tbody td {
   position: absolute;
   right: 1px;
 
+}
+
+.payment-method {
+
+  color: gray;
+}
+
+.account-tab {
+  color: gray;
+}
+
+.vr {
+  padding: 10px
+}
+
+.icon-style-hdfc {
+  height: 40px;
+  padding: 5px;
+}
+
+.icon-style-sbi {
+  height: 40px;
+  padding: 5px;
+}
+
+.icon-style-icici {
+  height: 40px;
+  padding: 5px;
+}
+
+.icon-style-axis {
+  height: 40px;
+  padding: 5px;
+}
+
+.icon-style-kotak {
+  height: 40px;
+  padding: 5px;
+}
+
+.btn-check {
+  padding: 5px;
+}
+
+.right {
+  float: right;
+
+}
+
+.left {
+  float: left;
+}
+
+.card-body .card-img-top {
+  padding: 15px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-50px);
+  background-color: #fff;
+}
+
+.account-button-group {
+  display: flex;
+  justify-content: space-evenly;
+}
+.deliver-text{
+  color: #e0aa3e;
+}
+
+.profile-text{
+height: 5px;
+width: auto;
+}
+.icon-style-overview,
+.icon-style-profile,
+.icon-style-password{
+height: 30px;
+width: 30px;
 }
